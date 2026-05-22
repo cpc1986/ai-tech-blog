@@ -61,12 +61,12 @@ export default function Home() {
       <section>
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-bold text-gray-900">Latest Articles</h2>
-          <a
+          <Link
             href="/blog"
             className="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
           >
             View all →
-          </a>
+          </Link>
         </div>
         {rest.length === 0 && (
           <p className="text-gray-400 text-center py-12">
@@ -105,12 +105,12 @@ export default function Home() {
           <p className="mb-6 text-indigo-100 max-w-md mx-auto">
             Bookmark this page and check back daily for new AI insights.
           </p>
-          <a
+          <Link
             href="/blog"
             className="inline-block bg-white text-indigo-600 font-semibold px-8 py-3 rounded-full hover:bg-indigo-50 transition-all shadow-lg shadow-indigo-900/20 hover:shadow-xl"
           >
             Browse All Articles →
-          </a>
+          </Link>
         </div>
       </section>
     </div>

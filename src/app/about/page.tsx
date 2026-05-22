@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function About() {
   return (
     <div className="max-w-2xl">
@@ -54,13 +56,13 @@ export default function About() {
       </div>
 
       <div className="mt-8">
-        <a
+        <Link
           href="/blog"
           className="inline-flex items-center gap-2 bg-indigo-600 text-white px-6 py-2.5 rounded-full hover:bg-indigo-700 transition-colors font-medium shadow-sm"
         >
           Read Our Articles
           <span>→</span>
-        </a>
+        </Link>
       </div>
     </div>
   );
