@@ -30,42 +30,63 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="antialiased">
-        <nav className="border-b border-gray-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-          <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="/" className="text-xl font-bold text-gray-900">
-              🤖 AI Tech Insights
+      <body className="antialiased min-h-screen flex flex-col">
+        {/* Navigation */}
+        <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-gray-100">
+          <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="/" className="flex items-center gap-2.5 group">
+              <span className="text-2xl">🤖</span>
+              <span className="text-lg font-bold text-gray-900 tracking-tight group-hover:text-indigo-600 transition-colors">
+                AI Tech Insights
+              </span>
             </a>
-            <div className="flex gap-6 text-sm font-medium text-gray-600">
-              <a href="/" className="hover:text-gray-900">
-                Home
-              </a>
-              <a href="/blog" className="hover:text-gray-900">
-                Blog
-              </a>
-              <a href="/about" className="hover:text-gray-900">
-                About
-              </a>
+            <div className="flex gap-1">
+              {[
+                { href: "/", label: "Home" },
+                { href: "/blog", label: "Blog" },
+                { href: "/about", label: "About" },
+              ].map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
           </div>
         </nav>
-        <main className="max-w-4xl mx-auto px-6 py-8">{children}</main>
-        <footer className="border-t border-gray-200 mt-16">
-          <div className="max-w-4xl mx-auto px-6 py-8 text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} AI Tech Insights. Powered by AI.
-            <br />
-            <a
-              href="mailto:contact@aitechinsights.dev"
-              className="hover:text-gray-700"
-            >
-              Contact
-            </a>
+
+        {/* Main Content */}
+        <main className="flex-1 max-w-5xl mx-auto px-6 py-10 w-full">
+          {children}
+        </main>
+
+        {/* Footer */}
+        <footer className="border-t border-gray-100 bg-white/50">
+          <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+            <span>© {new Date().getFullYear()} AI Tech Insights</span>
+            <div className="flex gap-6">
+              <a
+                href="/blog"
+                className="hover:text-indigo-600 transition-colors"
+              >
+                Blog
+              </a>
+              <a
+                href="/about"
+                className="hover:text-indigo-600 transition-colors"
+              >
+                About
+              </a>
+              <a
+                href="mailto:contact@aitechinsights.dev"
+                className="hover:text-indigo-600 transition-colors"
+              >
+                Contact
+              </a>
+            </div>
           </div>
         </footer>
       </body>

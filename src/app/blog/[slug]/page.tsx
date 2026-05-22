@@ -29,43 +29,68 @@ export default async function BlogPost({
   const contentHtml = await markdownToHtml(post.content);
 
   return (
-    <article>
+    <article className="max-w-3xl mx-auto">
+      {/* Back link */}
       <Link
         href="/blog"
-        className="text-sm text-blue-600 hover:text-blue-800 mb-4 inline-block"
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-700 mb-8 group"
       >
-        ← Back to Blog
+        <span className="group-hover:-translate-x-1 transition-transform">←</span>
+        Back to Blog
       </Link>
 
-      <header className="mb-8">
-        <div className="flex items-center gap-3 mb-3">
-          <span className="text-sm font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+      {/* Header */}
+      <header className="mb-10">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
             {post.category}
           </span>
           <span className="text-sm text-gray-400">
             {post.date} · {post.readingTime}
           </span>
         </div>
-        <h1 className="text-3xl font-bold">{post.title}</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight tracking-tight">
+          {post.title}
+        </h1>
       </header>
 
+      {/* Article Body */}
       <div
         className="prose max-w-none"
         dangerouslySetInnerHTML={{ __html: contentHtml }}
       />
 
+      {/* Tags */}
       {post.tags.length > 0 && (
-        <div className="mt-8 pt-6 border-t border-gray-200 flex gap-2 flex-wrap">
-          {post.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full"
-            >
-              #{tag}
-            </span>
-          ))}
+        <div className="mt-12 pt-8 border-t border-gray-200">
+          <div className="flex gap-2 flex-wrap">
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-sm text-gray-500 bg-gray-50 border border-gray-200 px-3 py-1 rounded-full"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
         </div>
       )}
+
+      {/* Bottom navigation */}
+      <div className="mt-10 pt-8 border-t border-gray-200 flex justify-between items-center">
+        <Link
+          href="/blog"
+          className="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+        >
+          ← All Articles
+        </Link>
+        <Link
+          href="/"
+          className="text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors"
+        >
+          Home →
+        </Link>
+      </div>
     </article>
   );
 }
