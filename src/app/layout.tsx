@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -34,25 +35,25 @@ export default function RootLayout({
         {/* Navigation */}
         <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-gray-100">
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="/" className="flex items-center gap-2.5 group">
+            <Link href="/" className="flex items-center gap-2.5 group">
               <span className="text-2xl">🤖</span>
               <span className="text-lg font-bold text-gray-900 tracking-tight group-hover:text-indigo-600 transition-colors">
                 AI Tech Insights
               </span>
-            </a>
+            </Link>
             <div className="flex gap-1">
               {[
                 { href: "/", label: "Home" },
                 { href: "/blog", label: "Blog" },
                 { href: "/about", label: "About" },
               ].map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -68,18 +69,18 @@ export default function RootLayout({
           <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
             <span>© {new Date().getFullYear()} AI Tech Insights</span>
             <div className="flex gap-6">
-              <a
+              <Link
                 href="/blog"
                 className="hover:text-indigo-600 transition-colors"
               >
                 Blog
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/about"
                 className="hover:text-indigo-600 transition-colors"
               >
                 About
-              </a>
+              </Link>
               <a
                 href="mailto:contact@aitechinsights.dev"
                 className="hover:text-indigo-600 transition-colors"
